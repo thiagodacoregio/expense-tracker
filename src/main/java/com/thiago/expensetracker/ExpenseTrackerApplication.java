@@ -1,4 +1,4 @@
-package com.thiago.expense_tracker;
+package com.thiago.expensetracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

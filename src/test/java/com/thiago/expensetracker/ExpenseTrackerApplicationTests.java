@@ -1,4 +1,4 @@
-package com.thiago.expense_tracker;
+package com.thiago.expensetracker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.thiago.expense_tracker.expense;
+package com.thiago.expensetracker.expense;
 
 public enum Category {
     FOOD,
