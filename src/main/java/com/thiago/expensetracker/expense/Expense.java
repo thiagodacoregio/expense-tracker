@@ -1,6 +1,7 @@
 package com.thiago.expensetracker.expense;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -34,13 +35,11 @@ public class Expense {
 
     }
 
-    public Expense(Long id, String description, BigDecimal amount, LocalDate date, Category category, Instant createdAt) {
-        this.id = id;
+    public Expense(String description, BigDecimal amount, LocalDate date, Category category) {
         this.description = description;
         this.amount = amount;
         this.date = date;
         this.category = category;
-        this.createdAt = createdAt;
     }
 
     @PrePersist
