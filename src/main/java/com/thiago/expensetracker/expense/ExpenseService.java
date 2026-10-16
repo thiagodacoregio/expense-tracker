@@ -47,4 +47,30 @@ public class ExpenseService {
                 .map(ExpenseResponse::from)
                 .orElseThrow(() -> new ExpenseNotFoundException(id));
     }
+
+    @Transactional
+    public ExpenseResponse update(Long id, ExpenseRequest request) {
+        Expense expense = repository.findById(id)
+                .orElseThrow(() -> new ExpenseNotFoundException(id));
+
+        expense.setDescription(request.description());
+        expense.setAmount(request.amount());
+        expense.setDate(request.date());
+        expense.setCategory(resolveCategory(request.category()));
+
+        return ExpenseResponse.from(expense);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new ExpenseNotFoundException(id);
+        }
+        repository.deleteById(id);
+    }
+
+    private Category resolveCategory(Category category) {
+        // TODO: ask the AI to suggest a category (Stage 6)
+        return category != null ? category : Category.OTHER;
+    }
 }
