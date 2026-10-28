@@ -318,3 +318,11 @@ code {
   max-width: 600px;
   margin: 0 auto;
 }
+
+#expense-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}

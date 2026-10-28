@@ -53,3 +53,13 @@ export async function createExpense(request: ExpenseRequest): Promise<Expense> {
 
     return response.json();
 }
+
+export async function deleteExpense(id: number): Promise<void> {
+    const response = await fetch(`${API_URL}/api/expenses/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok) {
+        throw await toApiError(response);
+    }
+}
