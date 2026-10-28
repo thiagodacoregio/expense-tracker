@@ -10,6 +10,24 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U expense_user -d expense_tracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: expense-tracker-app
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/expense_tracker
+      DB_USERNAME: expense_user
+      DB_PASSWORD: expense_pass
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:
