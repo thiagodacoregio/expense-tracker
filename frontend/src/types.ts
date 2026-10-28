@@ -1,11 +1,14 @@
-export type Category =
-    | 'FOOD'
-    | 'TRANSPORT'
-    | 'HOUSING'
-    | 'HEALTH'
-    | 'LEISURE'
-    | 'EDUCATION'
-    | 'OTHER';
+export const CATEGORIES = [
+    'FOOD',
+    'TRANSPORT',
+    'HOUSING',
+    'HEALTH',
+    'LEISURE',
+    'EDUCATION',
+    'OTHER',
+] as const;
+
+export type Category = (typeof CATEGORIES)[number];
 
 export interface Expense {
     id: number;
@@ -14,4 +17,11 @@ export interface Expense {
     date: string;
     category: Category;
     createdAt: string;
+}
+
+export interface ExpenseRequest {
+    description: string;
+    amount: number;
+    date: string;
+    category?: Category;
 }
