@@ -2,6 +2,10 @@
 
 ![CI](https://github.com/thiagodacoregio/expense-tracker/actions/workflows/ci.yml/badge.svg)
 
+**Live API:** https://expense-tracker-0qeb.onrender.com/api/expenses
+
+> Hosted on Render's free tier: the first request after 15 minutes of inactivity may take up to a minute while the service wakes up.
+
 REST API for tracking personal expenses, built with Java 25 and Spring Boot 4.
 
 ## Tech stack
@@ -11,6 +15,7 @@ REST API for tracking personal expenses, built with Java 25 and Spring Boot 4.
 - JUnit, Mockito, MockMvc and Testcontainers
 - Docker and Docker Compose
 - GitHub Actions for CI
+- Deployed on Render (Docker) with a managed PostgreSQL database on Neon
 
 ## Running locally
 
