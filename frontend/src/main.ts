@@ -1,5 +1,5 @@
 import './style.css';
-import { ApiError, createExpense, fetchExpenses } from './api';
+import { ApiError, createExpense, deleteExpense, fetchExpenses } from './api';
 import { CATEGORIES, type Category, type Expense, type ExpenseRequest } from './types';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
@@ -67,12 +67,39 @@ function renderExpenses(expenses: Expense[]): void {
 
     const items = expenses.map((expense) => {
         const item = document.createElement('li');
-        item.textContent =
+
+        const text = document.createElement('span');
+        text.textContent =
             `${expense.date} · ${expense.description} · £${expense.amount.toFixed(2)} · ${expense.category}`;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => handleDelete(expense, deleteButton));
+
+        item.append(text, deleteButton);
         return item;
     });
 
     list.replaceChildren(...items);
+}
+
+async function handleDelete(expense: Expense, button: HTMLButtonElement): Promise<void> {
+    const confirmed = window.confirm(`Delete "${expense.description}"?`);
+    if (!confirmed) {
+        return;
+    }
+
+    button.disabled = true;
+
+    try {
+        await deleteExpense(expense.id);
+    } catch (error) {
+        window.alert('Could not delete the expense. Please try again.');
+        console.error(error);
+    } finally {
+        await loadExpenses();
+    }
 }
 
 async function loadExpenses(): Promise<void> {
