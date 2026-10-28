@@ -2,7 +2,8 @@
 
 ![CI](https://github.com/thiagodacoregio/expense-tracker/actions/workflows/ci.yml/badge.svg)
 
-**Live API:** https://expense-tracker-0qeb.onrender.com/api/expenses
+- **Live app:** https://expense-tracker-1-6uun.onrender.com
+- **Live API:** https://expense-tracker-0qeb.onrender.com/api/expenses
 
 > Hosted on Render's free tier: the first request after 15 minutes of inactivity may take up to a minute while the service wakes up.
 
