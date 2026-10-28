@@ -52,7 +52,7 @@ class ExpenseIntegrationTest {
         mockMvc.perform(get(location))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.description").value("Train to Oxford"))
-                .andExpect(jsonPath("$.category").value("OTHER"))
+                .andExpect(jsonPath("$.category").value("FOOD"))
                 .andExpect(jsonPath("$.createdAt").exists());
 
         assertThat(repository.count()).isEqualTo(1);
