@@ -76,6 +76,9 @@ function renderExpenses(expenses: Expense[]): void {
 }
 
 async function loadExpenses(): Promise<void> {
+
+    list.innerHTML = '<li>Loading expenses… (the server may take up to a minute to wake up)</li>';
+
     try {
         renderExpenses(await fetchExpenses());
     } catch (error) {
